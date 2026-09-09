@@ -1,0 +1,471 @@
+/* ==========================================================================
+   BOB REEVES BRASS — HOMEPAGE V2
+   Deep heritage blue · machined brass · warm ivory
+   ========================================================================== */
+
+:root {
+  /* Deep heritage blue */
+  --navy-950: #071120;
+  --navy-900: #0b1a2e;
+  --navy-850: #0f2038;
+  --navy-800: #132744;
+  --navy-700: #1b3557;
+  --navy-600: #244266;
+
+  /* Warm ivory */
+  --ivory: #f1ead9;
+  --ivory-deep: #e7ddc5;
+  --ivory-field: #ede4cf;
+
+  /* Machined brass */
+  --brass-hi: #eed9a1;
+  --brass: #d3b268;
+  --brass-mid: #b28c3d;
+  --brass-deep: #8a6a28;
+  --brass-shadow: #5f4819;
+
+  --brass-grad: linear-gradient(
+    168deg,
+    var(--brass-hi) 0%,
+    var(--brass) 38%,
+    var(--brass-mid) 64%,
+    var(--brass-deep) 100%
+  );
+  --brass-rule: linear-gradient(
+    90deg,
+    rgba(178, 140, 61, 0) 0%,
+    var(--brass-mid) 22%,
+    var(--brass-hi) 50%,
+    var(--brass-mid) 78%,
+    rgba(178, 140, 61, 0) 100%
+  );
+
+  /* Ink on ivory */
+  --ink: #122642;
+  --ink-75: rgba(18, 38, 66, 0.78);
+  --ink-55: rgba(18, 38, 66, 0.56);
+  --ink-35: rgba(18, 38, 66, 0.34);
+  --line: rgba(18, 38, 66, 0.16);
+  --line-strong: rgba(18, 38, 66, 0.42);
+
+  /* Ivory on blue */
+  --ivory-text: #f1ead9;
+  --ivory-75: rgba(241, 234, 217, 0.78);
+  --ivory-55: rgba(241, 234, 217, 0.58);
+  --ivory-35: rgba(241, 234, 217, 0.36);
+  --line-blue: rgba(241, 234, 217, 0.14);
+  --line-blue-strong: rgba(241, 234, 217, 0.34);
+
+  /* Type */
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas,
+    monospace;
+
+  /* Rhythm */
+  --wrap-max: 1400px;
+  --wrap-pad: clamp(20px, 5vw, 72px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+p,
+dl,
+dd,
+dt,
+ul,
+ol,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--brass);
+  color: var(--navy-950);
+}
+
+:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Layout primitives
+   -------------------------------------------------------------------------- */
+
+.wrap {
+  max-width: var(--wrap-max);
+  margin-inline: auto;
+  padding-inline: var(--wrap-pad);
+}
+
+section[id],
+footer[id] {
+  scroll-margin-top: 20px;
+}
+
+.dot {
+  color: var(--brass);
+}
+
+/* Small technical label */
+.label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+
+.label::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  flex: none;
+  background: var(--brass-deep);
+}
+
+/* Section shells — blue dominates the page, ivory provides the breaks */
+.section--blue {
+  background: var(--navy-900);
+  color: var(--ivory-text);
+}
+
+.section--blue-deep {
+  background: var(--navy-950);
+  color: var(--ivory-text);
+}
+
+.section--paper {
+  background: var(--ivory);
+  color: var(--ink);
+}
+
+.section--blue .label,
+.section--blue-deep .label {
+  color: var(--ivory-55);
+}
+
+.section--blue .label::before,
+.section--blue-deep .label::before {
+  background: var(--brass);
+}
+
+.section--blue .section-head__index,
+.section--blue-deep .section-head__index {
+  color: var(--ivory-35);
+}
+
+.section--blue .dot,
+.section--blue-deep .dot {
+  color: var(--brass);
+}
+
+.section--paper .dot {
+  color: var(--brass-deep);
+}
+
+/* Section shells */
+.section {
+  padding-block: clamp(72px, 13vh, 150px);
+}
+
+.section-head__line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.section-head__index {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-35);
+}
+
+.section-head__title {
+  margin-top: clamp(20px, 3vh, 32px);
+  font-size: clamp(2.5rem, 5.4vw, 5rem);
+  font-weight: 560;
+  font-variation-settings: 'opsz' 144;
+  line-height: 1.02;
+  letter-spacing: -0.012em;
+  text-transform: uppercase;
+}
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: clamp(28px, 4vh, 40px);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 28px;
+  border: 1px solid transparent;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    filter 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+/* Machined brass — solid metal with a turned highlight, not foil */
+.btn--brass {
+  background: var(--brass-grad);
+  border-color: var(--brass-deep);
+  color: var(--navy-950);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 246, 218, 0.6),
+    inset 0 -1px 0 rgba(95, 72, 25, 0.45);
+}
+
+.btn--brass .btn__arrow {
+  color: var(--navy-950);
+}
+
+.btn--brass:hover {
+  filter: brightness(1.08);
+  border-color: var(--brass-shadow);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: inherit;
+}
+
+.section--blue .btn--ghost,
+.section--blue-deep .btn--ghost {
+  border-color: var(--line-blue-strong);
+}
+
+.section--blue .btn--ghost:hover,
+.section--blue-deep .btn--ghost:hover {
+  border-color: var(--brass);
+  background: rgba(241, 234, 217, 0.05);
+}
+
+.section--paper .btn--ghost {
+  border-color: var(--line-strong);
+}
+
+.section--paper .btn--ghost:hover {
+  border-color: var(--ink);
+  background: var(--ivory-deep);
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  position: relative;
+  background: #fbf9f4;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Turned brass hairline under the header */
+.site-header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--brass-rule);
+  opacity: 0.6;
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 16px;
+}
+
+.site-header__brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-header__brand-text {
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy-900);
+}
+
+.site-header__brand-text .dot {
+  color: var(--brass);
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(16px, 2.4vw, 32px);
+}
+
+.site-header__link {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-55);
+  transition: color 140ms ease;
+}
+
+.site-header__link:hover {
+  color: var(--brass-deep);
+}
+
+.site-header__est {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-35);
+}
+
+/* Social icon row — thin, elegant, directly underneath header nav */
+.site-header__social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding-block: 8px;
+  border-top: 1px solid var(--line);
+  background: #fbf9f4;
+}
+
+.site-header__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--ink-35);
+  text-decoration: none;
+  transition: color 140ms ease;
+}
+
+.site-header__social-link:hover {
+  color: var(--brass-deep);
+}
+
+.site-header__social-link:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  margin-top: 0;
+  background: var(--navy-950);
+  color: var(--ivory-text);
+  border-top: 1px solid;
+  border-image: var(--brass-rule) 1;
+}
+
+.site-footer__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: clamp(32px, 5vh, 48px) 18px;
+}
+
+.site-footer__brand {
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.site-footer__brand .dot {
+  color: var(--brass);
+}
+
+.site-footer__meta {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ivory-55);
+}
+
+.site-footer__note {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 24px;
+  padding-block: 14px 26px;
+  border-top: 1px solid var(--line-blue);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ivory-35);
+}

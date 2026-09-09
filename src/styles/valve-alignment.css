@@ -1,0 +1,752 @@
+/* ==========================================================================
+   VALVE ALIGNMENT SECTION
+   Bright, 50/50 layout. Approved artwork left, workshop photo +
+   scrolling information window right. White/cream background.
+   ========================================================================== */
+
+.valve-align {
+  position: relative;
+  padding-block: clamp(48px, 7vh, 80px);
+  background: #fbf9f4;
+  color: var(--ink);
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-image: var(--brass-rule) 1;
+  overflow: hidden;
+}
+
+.valve-align__grid {
+  max-width: var(--wrap-max);
+  margin-inline: auto;
+  padding-inline: var(--wrap-pad);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(24px, 3vw, 48px);
+  align-items: start;
+}
+
+/* --------------------------------------------------------------------------
+   LEFT — Approved artwork
+   -------------------------------------------------------------------------- */
+
+.valve-align__artwork {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(16px, 2vh, 24px);
+}
+
+.valve-align__artwork-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(18, 38, 66, 0.12);
+}
+
+/* Clickable hotspot positioned over the Book Appointment button in the artwork */
+.valve-align__artwork-cta {
+  position: absolute;
+  /* Positioned over the gold Book Appointment button area in the artwork */
+  bottom: clamp(40px, 8%, 80px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(140px, 40%, 200px);
+  height: clamp(32px, 6%, 52px);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 4px;
+  transition: background-color 160ms ease;
+}
+
+.valve-align__artwork-cta:hover {
+  background: rgba(211, 178, 104, 0.12);
+}
+
+.valve-align__artwork-cta:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+}
+
+/* Cover for incorrect Santa Monica location text baked into the artwork.
+   Uses a warm ivory background matching the artwork's cream paper texture.
+   A gradient mask feathers the top edge so the cover blends seamlessly
+   into the artwork — as if the footer text was never there. */
+.valve-align__artwork-location-cover {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: clamp(28px, 7%, 48px);
+  background: var(--ivory);
+  z-index: 2;
+  pointer-events: none;
+  mask-image: linear-gradient(
+    to top,
+    black 0%,
+    black 50%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to top,
+    black 0%,
+    black 50%,
+    transparent 100%
+  );
+}
+
+/* Remove old book button styles */
+.valve-align__book-btn {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT — Workshop photo + information window
+   -------------------------------------------------------------------------- */
+
+.valve-align__info {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 2.5vh, 32px);
+}
+
+.valve-align__photo {
+  margin: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--ivory-deep);
+}
+
+.valve-align__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  max-height: 200px;
+}
+
+.valve-align__photo-cap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  border-top: 1px solid var(--line);
+}
+
+.valve-align__photo-fig {
+  color: var(--brass-deep);
+}
+
+/* --------------------------------------------------------------------------
+   INFORMATION WINDOW — fixed height, internal scroll
+   -------------------------------------------------------------------------- */
+
+.valve-align__window {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: 0 2px 16px rgba(18, 38, 66, 0.06);
+  overflow: hidden;
+  position: relative;
+}
+
+.valve-align__window-scroll {
+  height: clamp(360px, 45vh, 480px);
+  overflow-y: auto;
+  padding: clamp(20px, 3vw, 32px);
+  padding-top: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brass-mid) var(--ivory-deep);
+}
+
+.valve-align__scroll-hint {
+  position: sticky;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding: 6px 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass-deep);
+  background: linear-gradient(to bottom, #ffffff 60%, transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.valve-align__window-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.valve-align__window-scroll::-webkit-scrollbar-track {
+  background: var(--ivory-deep);
+  border-radius: 3px;
+}
+
+.valve-align__window-scroll::-webkit-scrollbar-thumb {
+  background: var(--brass-mid);
+  border-radius: 3px;
+}
+
+.valve-align__window-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--brass-deep);
+}
+
+.valve-align__window-title {
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--navy-900);
+  margin-bottom: clamp(12px, 1.5vh, 18px);
+}
+
+.valve-align__window-text {
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.7;
+  color: var(--ink-75);
+  margin-bottom: 14px;
+  max-width: 52ch;
+}
+
+/* --------------------------------------------------------------------------
+   DIVIDER
+   -------------------------------------------------------------------------- */
+
+.valve-align__divider {
+  height: 1px;
+  background: var(--line);
+  margin-block: clamp(16px, 2vh, 24px);
+}
+
+/* --------------------------------------------------------------------------
+   INFO BLOCKS
+   -------------------------------------------------------------------------- */
+
+.valve-align__block {
+  margin-bottom: clamp(14px, 1.8vh, 20px);
+}
+
+.valve-align__block-heading {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass-deep);
+  margin-bottom: 6px;
+}
+
+.valve-align__block-text {
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  line-height: 1.65;
+  color: var(--ink-75);
+  max-width: 52ch;
+}
+
+/* --------------------------------------------------------------------------
+   PROOF
+   -------------------------------------------------------------------------- */
+
+.valve-align__proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 4vw, 48px);
+  margin-block: clamp(16px, 2vh, 24px);
+}
+
+.valve-align__proof-item {
+  text-align: center;
+}
+
+.valve-align__proof-value {
+  display: block;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 600;
+  font-variation-settings: 'opsz' 100;
+  color: var(--navy-900);
+  line-height: 1.1;
+}
+
+.valve-align__proof-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  line-height: 1.6;
+  margin-top: 6px;
+}
+
+.valve-align__proof-sep {
+  width: 1px;
+  height: 48px;
+  background: var(--line-strong);
+}
+
+/* --------------------------------------------------------------------------
+   QUOTE & SIGNATURE
+   -------------------------------------------------------------------------- */
+
+.valve-align__quote {
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 500;
+  font-variation-settings: 'opsz' 100;
+  line-height: 1.4;
+  color: var(--navy-900);
+  margin: 0 0 clamp(12px, 1.5vh, 18px) 0;
+}
+
+.valve-align__sig {
+  display: block;
+  width: clamp(120px, 16vw, 180px);
+  height: auto;
+  opacity: 0.9;
+  user-select: none;
+}
+
+/* --------------------------------------------------------------------------
+   LEARN MORE LINK
+   -------------------------------------------------------------------------- */
+
+.valve-align__learn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brass-deep);
+  text-decoration: none;
+  padding-block: 4px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 160ms ease;
+  margin-top: clamp(16px, 2vh, 24px);
+}
+
+.valve-align__learn:hover {
+  border-bottom-color: var(--brass-deep);
+}
+
+/* ==========================================================================
+   APPOINTMENT PANEL — overlay + modal
+   ========================================================================== */
+
+.appt-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 17, 32, 0.6);
+  backdrop-filter: blur(4px);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  padding: clamp(16px, 3vw, 40px);
+}
+
+.appt-panel {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: clamp(24px, 4vw, 40px);
+  box-shadow: 0 16px 48px rgba(7, 17, 32, 0.25);
+}
+
+.appt-panel__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--ink-55);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.appt-panel__close:hover {
+  background: var(--ivory-deep);
+  color: var(--ink);
+}
+
+.appt-panel__title {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--navy-900);
+  margin-bottom: clamp(20px, 3vh, 28px);
+  line-height: 1.2;
+}
+
+.appt-panel__form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vh, 20px);
+}
+
+.appt-panel__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.appt-panel__field-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+
+.appt-panel__input {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  padding: 12px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  background: var(--ivory);
+  color: var(--ink);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.appt-panel__input:focus {
+  outline: none;
+  border-color: var(--brass);
+  box-shadow: 0 0 0 3px rgba(211, 178, 104, 0.15);
+}
+
+.appt-panel__input::placeholder {
+  color: var(--ink-35);
+}
+
+.appt-panel__calendar {
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.appt-panel__cal-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;  color: var(--ink-55);
+  margin-bottom: 4px;
+}
+
+.appt-panel__cal-month {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy-900);
+  margin-bottom: 12px;
+}
+
+.appt-panel__cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.appt-panel__cal-dow {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-35);
+  padding-block: 4px;
+}
+
+.appt-panel__cal-day {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: transparent;
+  transition: all 120ms ease;
+}
+
+.appt-panel__cal-day.is-unavailable {
+  color: var(--ink-35);
+  cursor: default;
+  border-color: transparent;
+}
+
+.appt-panel__cal-day.is-available {
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.appt-panel__cal-day.is-available:hover {
+  border-color: var(--brass);
+  background: rgba(211, 178, 104, 0.1);
+}
+
+.appt-panel__cal-day.is-selected {
+  background: var(--brass);
+  color: var(--navy-950);
+  border-color: var(--brass);
+  font-weight: 600;
+}
+
+.appt-panel__cal-note {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-35);
+  margin-top: 10px;
+}
+
+.appt-panel__submit {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ivory-text);
+  background: var(--navy-900);
+  border: none;
+  padding: 14px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 160ms ease, opacity 160ms ease;
+}
+
+.appt-panel__submit:hover {
+  background: var(--navy-800);
+}
+
+.appt-panel__submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.appt-panel__done {
+  padding: clamp(20px, 4vw, 32px);
+  text-align: center;
+  border: 1px dashed var(--line-strong);
+  border-radius: 6px;
+}
+
+.appt-panel__done-text {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  line-height: 1.7;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .valve-align__grid {
+    grid-template-columns: 1fr;
+    gap: clamp(20px, 4vw, 40px);
+  }
+
+  .valve-align__window-scroll {
+    height: clamp(300px, 40vh, 420px);
+  }
+}
+
+@media (max-width: 560px) {
+  .valve-align {
+    padding-block: clamp(32px, 5vh, 48px);
+  }
+
+  .valve-align__proof {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .valve-align__proof-sep {
+    width: 40%;
+    height: 1px;
+  }
+
+  .valve-align__window-scroll {
+    height: clamp(280px, 35vh, 360px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .valve-align__book-btn,
+  .valve-align__learn,
+  .appt-panel__submit {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   CUSTOM MOUTHPIECE WORK / REEVES SLEEVE SYSTEM
+   Companion section to Valve Alignment. Presents the approved artwork
+   as supplied — no added title, no added copy. Matches Valve Alignment
+   container width, margins, background, and spacing rhythm.
+
+   The artwork is cropped to remove the bottom content (mouthpiece
+   illustration, "Built on Experience", icons, etc.) so the navy
+   CONTACT & ORDER strip can sit directly below.
+   ========================================================================== */
+
+.custom-mouthpiece {
+  position: relative;
+  padding-block: clamp(48px, 7vh, 80px) 0;
+  background: #fbf9f4;
+  color: var(--ink);
+  border-top: 1px solid;
+  border-bottom: none;
+  border-image: var(--brass-rule) 1;
+  overflow: hidden;
+}
+
+.custom-mouthpiece__inner {
+  max-width: var(--wrap-max);
+  margin-inline: auto;
+  padding-inline: var(--wrap-pad);
+  display: flex;
+  justify-content: center;
+}
+
+.custom-mouthpiece__crop {
+  overflow: hidden;
+  aspect-ratio: 1223 / 1000;
+  width: 100%;
+}
+
+.custom-mouthpiece__artwork {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+@media (max-width: 560px) {
+  .custom-mouthpiece {
+    padding-block: clamp(32px, 5vh, 48px) 0;
+  }
+}
+
+/* ==========================================================================
+   IT STARTED WITH BOB — minimal cream transition
+   ========================================================================== */
+
+.started-with-bob {
+  position: relative;
+  padding-block: clamp(48px, 7vh, 80px) clamp(32px, 4vh, 48px);
+  background: #fbf9f4;
+  color: var(--ink);
+  text-align: center;
+}
+
+.started-with-bob__inner {
+  max-width: var(--wrap-max);
+  margin-inline: auto;
+  padding-inline: var(--wrap-pad);
+}
+
+.started-with-bob__title {
+  font-size: clamp(1.8rem, 3.6vw, 3.2rem);
+  font-weight: 560;
+  font-variation-settings: 'opsz' 144;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--navy-900);
+}
+
+.started-with-bob__sub {
+  margin-top: clamp(12px, 1.8vh, 18px);
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--ink-75);
+}
+
+@media (max-width: 560px) {
+  .started-with-bob {
+    padding-block: clamp(32px, 5vh, 48px) clamp(24px, 3vh, 32px);
+  }
+}
+
+/* ==========================================================================
+   THE REEVES CREW — final homepage section
+   ========================================================================== */
+
+.reeves-crew {
+  position: relative;
+  padding-block: clamp(48px, 7vh, 80px);
+  background: #fbf9f4;
+  color: var(--ink);
+  border-top: 1px solid;
+  border-image: var(--brass-rule) 1;
+}
+
+.reeves-crew__inner {
+  max-width: var(--wrap-max);
+  margin-inline: auto;
+  padding-inline: var(--wrap-pad);
+}
+
+.reeves-crew__artwork-wrap {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(18, 38, 66, 0.1);
+}
+
+.reeves-crew__artwork {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.reeves-crew__hotspot {
+  position: absolute;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 160ms ease;
+}
+
+.reeves-crew__hotspot:hover {
+  background: rgba(211, 178, 104, 0.15);
+}
+
+.reeves-crew__hotspot:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .reeves-crew {
+    padding-block: clamp(32px, 5vh, 48px);
+  }
+}

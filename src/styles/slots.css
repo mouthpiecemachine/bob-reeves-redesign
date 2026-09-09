@@ -1,0 +1,258 @@
+/* ==========================================================================
+   BOB REEVES BRASS — HOMEPAGE V2
+   Image slots: labeled frames for authentic Reeves archive / product / work
+   photography. Machined-brass corner brackets; brushed-metal field for
+   product slots. No AI imagery, no stock photography — ever.
+   ========================================================================== */
+
+.slot {
+  position: relative;
+  border: 1px solid var(--line-strong);
+  background: var(--ivory-deep);
+}
+
+.section--blue .slot,
+.section--blue-deep .slot {
+  border-color: var(--line-blue-strong);
+  background: var(--navy-850);
+}
+
+.slot__corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  z-index: 2;
+}
+
+.slot__corner--tl {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--brass-mid);
+  border-left: 2px solid var(--brass-mid);
+}
+
+.slot__corner--tr {
+  top: -1px;
+  right: -1px;
+  border-top: 2px solid var(--brass-mid);
+  border-right: 2px solid var(--brass-mid);
+}
+
+.slot__corner--bl {
+  bottom: -1px;
+  left: -1px;
+  border-bottom: 2px solid var(--brass-mid);
+  border-left: 2px solid var(--brass-mid);
+}
+
+.slot__corner--br {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--brass-mid);
+  border-right: 2px solid var(--brass-mid);
+}
+
+.slot__media {
+  aspect-ratio: var(--slot-ratio, 16 / 10);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(18, 38, 66, 0.05) 0,
+      rgba(18, 38, 66, 0.05) 1px,
+      transparent 1px,
+      transparent 13px
+    ),
+    linear-gradient(178deg, var(--ivory-field), var(--ivory-deep));
+}
+
+.section--blue .slot__media,
+.section--blue-deep .slot__media {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(241, 234, 217, 0.035) 0,
+      rgba(241, 234, 217, 0.035) 1px,
+      transparent 1px,
+      transparent 13px
+    ),
+    linear-gradient(178deg, var(--navy-800), var(--navy-950));
+}
+
+/* Product variant: brushed and burnished metal field — the brass itself */
+.slot__media--product {
+  background-image:
+    radial-gradient(
+      130% 95% at 26% 14%,
+      rgba(238, 217, 161, 0.14),
+      rgba(238, 217, 161, 0) 55%
+    ),
+    repeating-linear-gradient(
+      97deg,
+      rgba(241, 234, 217, 0.05) 0,
+      rgba(241, 234, 217, 0.05) 1px,
+      transparent 1px,
+      transparent 8px
+    ),
+    linear-gradient(176deg, var(--navy-800), var(--navy-950) 82%);
+}
+
+/* When the authentic photograph arrives, it drops in as a direct <img>
+   child of .slot__media and fills the frame edge to edge: */
+.slot__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slot__center {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 24px;
+  text-align: center;
+}
+
+.slot__profile {
+  width: clamp(150px, 42%, 260px);
+  height: auto;
+  color: var(--brass);
+  opacity: 0.55;
+}
+
+.slot__cross {
+  color: var(--brass);
+}
+
+.slot__mark {
+  max-width: 34ch;
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 1.1vw, 0.82rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  line-height: 1.9;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.slot__sub {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-35);
+}
+
+.section--blue .slot__mark,
+.section--blue-deep .slot__mark {
+  color: var(--ivory-text);
+}
+
+.section--blue .slot__sub,
+.section--blue-deep .slot__sub {
+  color: var(--ivory-35);
+}
+
+.section--paper .slot__cross,
+.section--paper .slot__profile {
+  color: var(--brass-deep);
+}
+
+.slot__caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+
+.section--blue .slot__caption,
+.section--blue-deep .slot__caption {
+  border-top-color: var(--line-blue-strong);
+  color: var(--ivory-55);
+}
+
+.slot__figure {
+  margin-right: 10px;
+  color: var(--brass-deep);
+}
+
+.section--blue .slot__figure,
+.section--blue-deep .slot__figure {
+  color: var(--brass);
+}
+
+.slot__note {
+  text-align: right;
+  color: var(--brass-deep);
+}
+
+.section--blue .slot__note,
+.section--blue-deep .slot__note {
+  color: var(--ivory-55);
+}
+
+/* Hero slot — the large premium product frame */
+.slot--hero .slot__corner {
+  width: 26px;
+  height: 26px;
+}
+
+.slot--hero .slot__center {
+  gap: 18px;
+  padding: clamp(24px, 4vw, 48px);
+}
+
+.slot--hero .slot__mark {
+  font-size: clamp(0.78rem, 1.4vw, 1rem);
+  letter-spacing: 0.26em;
+  line-height: 2;
+}
+
+.slot--hero .slot__profile {
+  width: clamp(200px, 26%, 320px);
+  opacity: 0.6;
+}
+
+/* Mini slot — portal row thumbnails */
+.slot--mini .slot__caption {
+  display: none;
+}
+
+.slot--mini .slot__corner {
+  width: 12px;
+  height: 12px;
+}
+
+.slot--mini .slot__center {
+  gap: 8px;
+  padding: 14px;
+}
+
+.slot--mini .slot__cross {
+  width: 20px;
+  height: 20px;
+}
+
+.slot--mini .slot__mark {
+  font-size: 0.56rem;
+  letter-spacing: 0.16em;
+  line-height: 1.7;
+}
+
+.slot--mini .slot__sub {
+  display: none;
+}
+
+.slot--mini .slot__profile {
+  width: 72%;
+  min-width: 90px;
+}
