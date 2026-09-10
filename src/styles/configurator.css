@@ -1,0 +1,600 @@
+/* ==========================================================================
+   FIND YOUR REEVES — the approved configurator (cream / navy / gold).
+   Built on the V2 token system in base.css — no new palette, no new fonts.
+
+   The centerpiece is the APPROVED polished-silver mouthpiece artwork
+   (public/mouthpiece-approved.png, extracted from the approved reference).
+   The selector windows are real controls positioned in "artwork pixel"
+   units: --u is one pixel of the 1357×382 artwork, so the windows stay
+   glued to the rim / cup / backbore at every size.
+   ========================================================================== */
+
+.cfg {
+  padding-block: clamp(40px, 6.5vh, 80px);
+  background:
+    radial-gradient(1200px 420px at 50% -140px, rgba(255, 255, 255, 0.55), transparent 70%),
+    var(--ivory);
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------- the tagline
+   Bold, premium, compact — centred directly above the mouthpiece. Only
+   this line returns; the large branding/business-card block does not. */
+.cfg-tagline {
+  margin: 0 auto clamp(8px, 1.2vh, 14px);
+  max-width: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 2.2vw, 24px);
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 680;
+  font-variation-settings: 'opsz' 144;
+  font-size: clamp(0.95rem, 1.7vw, 1.32rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--navy-900);
+}
+
+/* ------------------------------------------------------------------ stage */
+
+.cfg-stage {
+  /* One artwork pixel: the approved 1357px-wide artwork now renders at up to
+     992px (80% of the original 1240px stage — a ~20% size reduction), kept
+     horizontally centred. 1u = min(100vw, 992px) / 1357. On narrower screens
+     the wrap's padding makes the stage slightly smaller than 100vw — the
+     windows then render a touch larger than the artwork, which keeps the
+     baked-in reference windows fully covered. */
+  --u: min(0.07369vw, 0.73099px);
+  position: relative;
+  max-width: 992px;
+  margin: clamp(8px, 1.4vh, 20px) auto 0;
+}
+
+.cfg-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* --------------------------------------------------- the BOB REEVES engraving
+
+   The supplied transparent engraving asset, overlaid on the BACKBORE / SHANK —
+   just to the right of the backbore-number selector box, centred vertically on
+   that portion of the shank (never on the cup/body).
+
+   Readability pass: enlarged so the mark occupies roughly 57% of the available
+   shank length to the right of the backbore selector (320 artwork px of the
+   ~556 px run to the shank tip — comfortably over half), re-centred vertically
+   on the shank, and made only slightly darker than before, so BOB REEVES still
+   reads as an engraved/stamped maker's mark against the silver — not solid
+   black. Sized in --u artwork-pixel units so it scales exactly with the
+   artwork, with pointer-events none to keep it clear of the live controls. */
+.cfg-engrave {
+  position: absolute;
+  left: calc(900 * var(--u));
+  top: calc(128 * var(--u));
+  width: calc(320 * var(--u));
+  height: auto;
+  opacity: 0.74;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+/* Clean thin black outline — crisp engraved stroke around the letters with
+   no blur, glow, or shadow. Interior stays transparent so the silver shows
+   through. Outline is thin (~50% of previous) for a real engraved look. */
+  filter: drop-shadow(0 0 0.5px #000);
+}
+
+/* --------------------------------------------------- the selector windows */
+
+/* Window centres, measured on the artwork: rim 15.01% / 45.55%,
+   cup 27.97% / 47.38%, backbore 59.03% / 49.21%. */
+.cfg-window {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.cfg-window--rim {
+  left: 15.01%;
+  top: 45.55%;
+}
+
+.cfg-window--cup {
+  left: 27.97%;
+  top: 47.38%;
+}
+
+.cfg-window--backbore {
+  left: 59.03%;
+  top: 49.21%;
+}
+
+/* The white selector pill — sized to cover the window baked into the
+   artwork (a few % larger so the baked pill can never peek out). */
+.cfg-window__pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fffdf8;
+  border: 1px solid rgba(122, 136, 150, 0.6);
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 calc(2 * var(--u)) rgba(255, 255, 255, 0.6),
+    0 calc(2 * var(--u)) calc(7 * var(--u)) rgba(9, 18, 32, 0.32),
+    inset 0 calc(1 * var(--u)) calc(2 * var(--u)) rgba(18, 38, 66, 0.14);
+}
+
+.cfg-window--rim .cfg-window__pill {
+  width: max(48px, calc(64 * var(--u)));
+  aspect-ratio: 64 / 156;
+}
+
+.cfg-window--cup .cfg-window__pill {
+  width: max(66px, calc(108 * var(--u)));
+  aspect-ratio: 108 / 56;
+}
+
+.cfg-window--backbore .cfg-window__pill {
+  width: max(80px, calc(140 * var(--u)));
+  aspect-ratio: 140 / 50;
+}
+
+/* Shared live value — windows and cards. */
+.cfg-value {
+  display: inline-block;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: var(--navy-950);
+  animation: cfg-pop 200ms ease-out;
+}
+
+.cfg-window__pill .cfg-value {
+  font-size: max(14px, calc(28 * var(--u)));
+}
+
+@keyframes cfg-pop {
+  from {
+    transform: scale(0.86);
+    opacity: 0.4;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ------------------------------------------------- the small gold arrows */
+
+.cfg-arrow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max(30px, calc(30 * var(--u)));
+  height: max(20px, calc(20 * var(--u)));
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.cfg-arrow span {
+  width: max(16px, calc(24 * var(--u)));
+  height: max(11px, calc(16 * var(--u)));
+  background: linear-gradient(180deg, #c59b50, #a37a30);
+  transition: filter 140ms ease, transform 140ms ease;
+}
+
+.cfg-arrow--up span {
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.cfg-arrow--down span {
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.cfg-arrow:hover span {
+  filter: brightness(1.12);
+}
+
+.cfg-arrow:active span {
+  transform: translateY(1px);
+}
+
+.cfg-arrow:focus-visible {
+  outline: 2px solid var(--brass-deep, #8a6a28);
+  outline-offset: 2px;
+}
+
+/* Arrow positions — measured on the artwork and expressed in --u units,
+   relative to each pill's centre. The rim pill carries its arrows inside
+   (as in the reference); the cup and backbore arrows sit above / below. */
+.cfg-window--rim .cfg-arrow--up {
+  top: calc(50% - 64 * var(--u));
+}
+
+.cfg-window--rim .cfg-arrow--down {
+  top: calc(50% + 39 * var(--u));
+}
+
+.cfg-window--cup .cfg-arrow--up {
+  top: calc(50% - 66 * var(--u));
+}
+
+.cfg-window--cup .cfg-arrow--down {
+  top: calc(50% + 30 * var(--u));
+}
+
+.cfg-window--backbore .cfg-arrow--up {
+  top: calc(50% - 52 * var(--u));
+}
+
+.cfg-window--backbore .cfg-arrow--down {
+  top: calc(50% + 24 * var(--u));
+}
+
+/* ------------------------------------------------------------------ press */
+
+.cfg-press {
+  margin-top: clamp(18px, 3vh, 30px);
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 1.05vw, 0.8rem);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--ink-75);
+}
+
+/* -------------------------------------------------- the information cards */
+
+.cfg-cards {
+  margin-top: clamp(22px, 4vh, 40px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 1.8vw, 22px);
+  align-items: stretch;
+}
+
+/* Fast-scan card: label → selected value → short published description →
+   key measurements. Only published fields are shown. */
+.cfg-card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(16px, 2vw, 24px) clamp(18px, 2.2vw, 28px) clamp(14px, 1.8vw, 22px);
+  background: #fffdf6;
+  border: 1px solid var(--line-strong);
+}
+
+.cfg-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cfg-card__label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+
+/* compact stacked arrow pair, as in the reference cards */
+.cfg-card__stepper {
+  display: grid;
+  gap: 2px;
+  justify-items: center;
+}
+
+.cfg-card__stepper .cfg-arrow {
+  position: static;
+  transform: none;
+  width: 26px;
+  height: 16px;
+}
+
+.cfg-card__stepper .cfg-arrow span {
+  width: 17px;
+  height: 11px;
+}
+
+.cfg-card__value {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: clamp(2.3rem, 3.6vw, 3rem);
+  font-weight: 640;
+  font-variation-settings: 'opsz' 144;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--navy-950);
+}
+
+.cfg-card__chip {
+  padding: 5px 10px;
+  border: 1px solid var(--brass-mid);
+  border-radius: 999px;
+  background: rgba(178, 140, 61, 0.08);
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass-deep);
+}
+
+.cfg-card__lead {
+  margin-top: 8px;
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--navy-900);
+}
+
+.cfg-card__desc {
+  margin-top: 8px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-75);
+}
+
+.cfg-card__desc.is-open {
+  -webkit-line-clamp: unset;
+}
+
+/* "More details +" — reveals the remaining exact published wording */
+.cfg-more {
+  align-self: flex-start;
+  margin-top: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass-deep);
+  transition: color 140ms ease;
+}
+
+.cfg-more:hover {
+  color: var(--navy-900);
+}
+
+.cfg-more:focus-visible {
+  outline: 2px solid var(--brass-deep, #8a6a28);
+  outline-offset: 2px;
+}
+
+.cfg-card__specs {
+  margin-top: auto;
+  padding-top: 12px;
+  display: grid;
+}
+
+.cfg-card__specs:empty {
+  display: none;
+}
+
+.cfg-card__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 7px 0;
+  border-top: 1px solid var(--line);
+}
+
+.cfg-card__row dt {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+
+.cfg-card__row dd {
+  margin: 0;
+  text-align: right;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--navy-900);
+}
+
+.cfg-card__rowsub {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--ink-55);
+}
+
+/* -------------------------------------------------------------- buy area */
+
+.cfg-bottom {
+  margin-top: clamp(8px, 1.5vh, 16px);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.cfg-made {
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cfg-made__flag {
+  width: clamp(34px, 3.2vw, 44px);
+  height: auto;
+  flex: none;
+}
+
+.cfg-made__text {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  line-height: 1.7;
+  text-transform: uppercase;
+  color: var(--navy-900);
+}
+
+/* Bob Reeves signature — bottom-right, balancing the USA flag treatment
+   on the bottom-left. Uses the supplied signature asset exactly as given. */
+.cfg-sig {
+  justify-self: end;
+  display: block;
+  width: clamp(120px, 15vw, 190px);
+  height: auto;
+  opacity: 0.9;
+  user-select: none;
+}
+
+.cfg-buy {
+  grid-column: 2;
+  display: grid;
+  justify-items: center;
+  gap: clamp(8px, 1.2vh, 12px);
+}
+
+.cfg-buy__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(7px, 0.9vw, 11px);
+  padding: clamp(9px, 1.3vh, 13px) clamp(20px, 2.8vw, 44px);
+  border: 1px solid var(--brass-shadow);
+  border-radius: 999px;
+  background: var(--brass-grad);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 246, 218, 0.55),
+    inset 0 -3px 0 rgba(95, 72, 25, 0.42),
+    0 8px 18px rgba(138, 106, 40, 0.34);
+  color: var(--ivory-text);
+  font-family: var(--font-display);
+  font-size: clamp(0.72rem, 1.5vw, 1.15rem);
+  font-weight: 640;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-shadow: 0 1px 2px rgba(95, 72, 25, 0.5);
+  transition: filter 160ms ease, transform 160ms ease;
+}
+
+.cfg-buy__btn:hover {
+  filter: brightness(1.07);
+}
+
+.cfg-buy__btn:active {
+  transform: translateY(1px);
+}
+
+.cfg-buy__btn[data-pending='true'] {
+  cursor: default;
+}
+
+.cfg-buy__icon {
+  width: clamp(0.9rem, 1.3vw, 1.2rem);
+  height: auto;
+  flex: none;
+}
+
+.cfg-buy__chevron {
+  width: clamp(0.65rem, 0.95vw, 0.85rem);
+  height: auto;
+  flex: none;
+}
+
+/* Did you find your Reeves? — smaller and reduced in prominence */
+.cfg-did {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.2vw, 14px);
+}
+
+.cfg-dash {
+  width: clamp(16px, 2vw, 26px);
+  height: 2px;
+  background: var(--brass-mid);
+}
+
+.cfg-did__text {
+  font-size: clamp(0.85rem, 1.5vw, 1.15rem);
+  font-weight: 500;
+  color: var(--navy-950);
+}
+
+/* ------------------------------------------------------------- responsive */
+
+@media (max-width: 980px) {
+  .cfg-cards {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 620px;
+    margin-inline: auto;
+  }
+
+  .cfg-bottom {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .cfg-buy {
+    grid-column: auto;
+    order: -1;
+  }
+
+  .cfg-made {
+    justify-self: center;
+  }
+
+  .cfg-sig {
+    justify-self: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .cfg-press {
+    letter-spacing: 0.2em;
+  }
+
+  .cfg-buy__btn {
+    width: min(100%, 260px);
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cfg-value {
+    animation: none;
+  }
+
+  .cfg-arrow span,
+  .cfg-buy__btn {
+    transition: none;
+  }
+}

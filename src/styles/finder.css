@@ -1,0 +1,1065 @@
+/* ==========================================================================
+   BOB REEVES BRASS — V3 heritage sales experience.
+   Built on the V2 token system in base.css — no new palette, no new fonts.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Hero V3 — approved archival composition:
+   vintage brand mark top left (header), the story left, the real records
+   photograph right, and a genuine archival contact strip along the bottom.
+   -------------------------------------------------------------------------- */
+
+.hero-v3 {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy-950);
+  color: var(--ivory-text);
+  padding-block: clamp(26px, 4vh, 46px) 0;
+}
+
+.hero-v3__rings {
+  position: absolute;
+  top: -180px;
+  right: -200px;
+  width: min(58vw, 740px);
+  height: auto;
+  color: var(--brass);
+  opacity: 0.14;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-v3__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 5vw, 88px);
+  align-items: stretch;
+  padding-bottom: clamp(14px, 2.5vh, 28px);
+}
+
+.hero-v3__body {
+  padding-bottom: 0;
+}
+
+.hero-v3__kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ivory-75);
+}
+
+.hero-v3__kicker::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  flex: none;
+  background: var(--brass);
+}
+
+.hero-v3__kicker-sep {
+  color: var(--brass);
+}
+
+.hero-v3__title {
+  margin-top: clamp(12px, 2vh, 20px);
+  font-size: clamp(1.9rem, 5.9vw, 5.4rem);
+  font-weight: 560;
+  font-variation-settings: 'opsz' 144;
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+
+.hero-v3__copy {
+  margin-top: clamp(12px, 1.8vh, 18px);
+  max-width: 44ch;
+  font-size: clamp(1.06rem, 1.35vw, 1.28rem);
+  line-height: 1.62;
+  color: var(--ivory-75);
+}
+
+/* tighter CTA row — compressed hero */
+.hero-v3__cta-row {
+  margin-top: clamp(14px, 2.2vh, 24px);
+}
+
+/* Hero right — the real records photograph, framed like the V2 slots.
+   No caption panel: the photo stands on its own. The card stretches to
+   the hero row so its bottom edge meets the two buttons' bottom edge;
+   object-position keeps the handwritten entries (Freddie Hubbard,
+   Snooky Young, Art Farmer) fully visible, unaltered. */
+.hero-v3__record {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line-blue-strong);
+  background: var(--navy-850);
+}
+
+.hero-v3__record-media {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.hero-v3__record-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 35% 45%;
+}
+
+/* Hero bottom — genuine archival contact strip.
+   The photographs are presented exactly as scanned: no filters, no tints. */
+.hero-v3__archive {
+  position: relative;
+  z-index: 1;
+  padding-bottom: clamp(18px, 3vh, 34px);
+}
+
+.hero-v3__strip {
+  margin-top: clamp(12px, 2vh, 18px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(10px, 1.4vw, 18px);
+}
+
+.hero-v3__strip-frame {
+  position: relative;
+  border: 1px solid var(--line-blue);
+  background: var(--navy-900);
+}
+
+.hero-v3__strip-frame img {
+  display: block;
+  width: 100%;
+  height: clamp(120px, 15vw, 210px);
+  object-fit: cover;
+}
+
+.hero-v3__strip-num {
+  display: block;
+  padding: 6px 10px;
+  border-top: 1px solid var(--line-blue);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  color: var(--ivory-35);
+}
+
+/* Larger machined-brass button for the primary commercial actions */
+.btn--xl {
+  padding: 21px 34px;
+  font-size: 0.84rem;
+  letter-spacing: 0.18em;
+}
+
+/* --------------------------------------------------------------------------
+   FIND YOUR REEVES — the primary sales moment
+   -------------------------------------------------------------------------- */
+
+.fyre {
+  background: var(--navy-900);
+  color: var(--ivory-text);
+  padding-block: clamp(52px, 8vh, 104px);
+}
+
+.fyre__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 6vw, 104px);
+  align-items: start;
+}
+
+.fyre__title {
+  margin-top: clamp(20px, 3vh, 32px);
+  font-size: clamp(2.8rem, 7vw, 6.6rem);
+  font-weight: 560;
+  font-variation-settings: 'opsz' 144;
+  line-height: 1;
+  letter-spacing: -0.014em;
+  text-transform: uppercase;
+}
+
+/* The CTA as typography — machined brass, catalog-scale */
+.fyre__cta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: clamp(14px, 2vw, 28px);
+  margin-top: clamp(28px, 5vh, 52px);
+  font-size: clamp(2.1rem, 5.4vw, 4.8rem);
+  font-weight: 560;
+  font-variation-settings: 'opsz' 144;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--brass-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  border-bottom: 1px solid var(--brass-mid);
+  padding-bottom: clamp(10px, 1.6vh, 18px);
+  transition: filter 160ms ease;
+}
+
+.fyre__cta:hover {
+  filter: brightness(1.12);
+}
+
+.fyre__cta-arrow {
+  color: var(--brass);
+  transition: transform 200ms ease;
+}
+
+.fyre__cta:hover .fyre__cta-arrow {
+  transform: translateX(14px);
+}
+
+.fyre__shop {
+  display: inline-block;
+  margin-top: clamp(18px, 3vh, 26px);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ivory-55);
+  border-bottom: 1px solid var(--line-blue-strong);
+  padding-bottom: 4px;
+  transition: color 140ms ease;
+}
+
+.fyre__shop:hover {
+  color: var(--ivory-text);
+}
+
+.fyre__copy {
+  max-width: 26ch;
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  line-height: 1.4;
+  font-style: italic;
+  color: var(--ivory-75);
+}
+
+.fyre__journey {
+  margin-top: clamp(24px, 4vh, 40px);
+  border-top: 1px solid var(--line-blue);
+}
+
+.fyre__journey-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line-blue);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ivory-55);
+}
+
+.fyre__journey-row:last-child {
+  color: var(--ivory-text);
+}
+
+.fyre__journey-num {
+  min-width: 2.2em;
+  color: var(--brass);
+}
+
+.fyre__aside .slot {
+  margin-top: clamp(24px, 4vh, 40px);
+}
+
+/* --------------------------------------------------------------------------
+   THE MAKER — the first story beat
+   -------------------------------------------------------------------------- */
+
+.maker__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(28px, 5vw, 96px);
+  align-items: center;
+}
+
+.maker__slot {
+  order: -1;
+  max-width: 520px;
+}
+
+.maker__copy {
+  margin-top: clamp(18px, 3vh, 28px);
+  max-width: 52ch;
+  font-size: clamp(1.04rem, 1.3vw, 1.24rem);
+  line-height: 1.66;
+  color: var(--ink-75);
+}
+
+.maker__note {
+  margin-top: clamp(24px, 4vh, 40px);
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+  color: var(--ink);
+}
+
+/* Adjacent ivory sections get a quiet catalog rule between them */
+.section--paper + .section--paper {
+  border-top: 1px solid var(--line);
+}
+
+/* THE PLAYER closing line */
+.way__close {
+  margin-top: clamp(24px, 4vh, 40px);
+  max-width: 42ch;
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  line-height: 1.6;
+  color: var(--ink-75);
+}
+
+/* --------------------------------------------------------------------------
+   THE CONTINUATION — final commercial beat
+   -------------------------------------------------------------------------- */
+
+.close__pair {
+  margin-top: clamp(32px, 5vh, 56px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2.4vw, 32px);
+  max-width: 720px;
+}
+
+.close__kicker {
+  margin-top: clamp(40px, 7vh, 80px);
+  font-family: var(--font-mono);
+  font-size: clamp(0.8rem, 1.4vw, 1rem);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ivory-55);
+}
+
+.close__title {
+  margin-top: 14px;
+  font-size: clamp(3rem, 8.5vw, 8rem);
+  font-weight: 560;
+  font-variation-settings: 'opsz' 144;
+  line-height: 1;
+  letter-spacing: -0.014em;
+  text-transform: uppercase;
+}
+
+.close__sub {
+  margin-top: clamp(18px, 3vh, 28px);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2vw, 1.7rem);
+  color: var(--ivory-75);
+}
+
+/* --------------------------------------------------------------------------
+   Header CTA + footer link
+   -------------------------------------------------------------------------- */
+
+/* Modernized Reeves brand mark — transparent PNG used exactly as supplied
+   (1672 × 941). Width-driven so the full artwork reads at header scale;
+   transparency preserved — no CSS background, no recolor, no crop. */
+.site-header__logo {
+  display: block;
+  width: clamp(220px, 22vw, 320px);
+  height: auto;
+}
+
+/* The header carries the larger mark — the nav wraps instead of colliding */
+.site-header__inner {
+  padding-block: clamp(10px, 1.6vh, 18px);
+}
+
+.site-header__nav {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  row-gap: 8px;
+}
+
+@media (max-width: 1360px) {
+  .site-header__est {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .site-header__inner {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .site-header__nav {
+    justify-content: center;
+  }
+
+  .site-header__logo {
+    width: clamp(220px, 32vw, 300px);
+  }
+}
+
+@media (max-width: 720px) {
+  .site-header__logo {
+    width: min(72vw, 260px);
+  }
+}
+
+.site-header__cta {
+  padding: 10px 18px;
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+}
+
+.site-footer__fyre {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--brass);
+  border-bottom: 1px solid var(--brass-deep);
+  padding-bottom: 3px;
+  transition: color 140ms ease;
+}
+
+.site-footer__fyre:hover {
+  color: var(--brass-hi);
+}
+
+/* --------------------------------------------------------------------------
+   FIND YOUR REEVES — the fitting page
+   -------------------------------------------------------------------------- */
+
+.finder-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy-950);
+  color: var(--ivory-text);
+  padding-block: clamp(64px, 11vh, 128px);
+  border-bottom: 1px solid;
+  border-image: var(--brass-rule) 1;
+}
+
+.finder-hero__rings {
+  position: absolute;
+  top: -160px;
+  right: -180px;
+  width: min(46vw, 600px);
+  height: auto;
+  color: var(--brass);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.finder-hero__title {
+  position: relative;
+  margin-top: clamp(20px, 3vh, 32px);
+  font-size: clamp(2.8rem, 7.5vw, 7rem);
+  font-weight: 560;
+  font-variation-settings: 'opsz' 144;
+  line-height: 1;
+  letter-spacing: -0.014em;
+  text-transform: uppercase;
+}
+
+.finder-hero__copy {
+  position: relative;
+  margin-top: clamp(20px, 3vh, 32px);
+  max-width: 52ch;
+  font-size: clamp(1.04rem, 1.3vw, 1.24rem);
+  line-height: 1.66;
+  color: var(--ivory-75);
+}
+
+.finder-hero .notice {
+  position: relative;
+}
+
+/* The brass prototype notice chip — used on both routes */
+.notice {
+  display: inline-block;
+  margin-top: clamp(20px, 3vh, 30px);
+  padding: 10px 14px;
+  border: 1px solid var(--brass-mid);
+  background: rgba(178, 140, 61, 0.08);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  line-height: 1.8;
+  text-transform: uppercase;
+  color: var(--brass-hi);
+}
+
+.section--paper .notice {
+  color: var(--brass-deep);
+  background: rgba(178, 140, 61, 0.07);
+}
+
+.finder {
+  padding-block: clamp(56px, 9vh, 110px);
+}
+
+.finder__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+}
+
+.finder__progress-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+
+.finder__bar {
+  margin-top: 16px;
+  height: 2px;
+  background: var(--line);
+}
+
+.finder__bar-fill {
+  height: 100%;
+  background: var(--brass-grad);
+  transition: width 400ms ease;
+}
+
+.finder__card {
+  position: relative;
+  margin-top: clamp(32px, 5vh, 56px);
+  border: 1px solid var(--line-strong);
+  background: var(--ivory-deep);
+  padding: clamp(28px, 4vw, 56px);
+}
+
+.finder__qnum {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass-deep);
+}
+
+.finder__qtitle {
+  margin-top: 14px;
+  font-size: clamp(1.8rem, 3.6vw, 3.2rem);
+  font-weight: 560;
+  font-variation-settings: 'opsz' 144;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.finder__qblurb {
+  margin-top: 12px;
+  font-style: italic;
+  color: var(--ink-55);
+}
+
+.finder__opts {
+  margin-top: clamp(24px, 4vh, 40px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.finder__opt {
+  text-align: left;
+  border: 1px solid var(--line-strong);
+  background: rgba(18, 38, 66, 0.02);
+  padding: 16px 18px;
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  line-height: 1.35;
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    border-color 140ms ease,
+    background-color 140ms ease,
+    color 140ms ease;
+}
+
+.finder__opt:hover {
+  border-color: var(--ink);
+}
+
+.finder__opt[aria-pressed='true'] {
+  background: var(--navy-900);
+  border-color: var(--navy-900);
+  color: var(--ivory-text);
+}
+
+.finder__opt-hint {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-35);
+}
+
+.finder__opt[aria-pressed='true'] .finder__opt-hint {
+  color: var(--ivory-55);
+}
+
+.finder__input {
+  width: 100%;
+  margin-top: clamp(24px, 4vh, 40px);
+  padding: 18px 20px;
+  border: 1px solid var(--line-strong);
+  background: var(--ivory-field);
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  color: var(--ink);
+}
+
+.finder__input::placeholder {
+  color: var(--ink-35);
+  font-style: italic;
+}
+
+.finder__examples {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-35);
+}
+
+.finder__example {
+  border: 1px solid var(--line);
+  background: transparent;
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  cursor: pointer;
+  transition:
+    border-color 140ms ease,
+    color 140ms ease;
+}
+
+.finder__example:hover {
+  border-color: var(--brass-mid);
+  color: var(--ink);
+}
+
+.finder__nav {
+  margin-top: clamp(28px, 4vh, 44px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn:disabled:hover {
+  filter: none;
+}
+
+/* --------------------------------------------------------------------------
+   FIND YOUR REEVES — starting points
+   -------------------------------------------------------------------------- */
+
+.results {
+  background: var(--navy-900);
+  color: var(--ivory-text);
+  padding-block: clamp(64px, 11vh, 128px);
+  border-top: 1px solid;
+  border-image: var(--brass-rule) 1;
+}
+
+.results__title {
+  margin-top: clamp(20px, 3vh, 32px);
+  font-size: clamp(2.4rem, 5.5vw, 5rem);
+  font-weight: 560;
+  font-variation-settings: 'opsz' 144;
+  line-height: 1.02;
+  letter-spacing: -0.012em;
+  text-transform: uppercase;
+}
+
+.results__notes {
+  margin-top: clamp(20px, 3vh, 30px);
+  display: grid;
+  gap: 10px;
+  max-width: 68ch;
+}
+
+.results__note {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  line-height: 1.8;
+  text-transform: uppercase;
+  color: var(--ivory-55);
+}
+
+.results__list {
+  margin-top: clamp(36px, 6vh, 64px);
+  display: grid;
+  gap: clamp(16px, 2vw, 24px);
+}
+
+.rec {
+  position: relative;
+  border: 1px solid var(--line-blue-strong);
+  background: var(--navy-850);
+  padding: clamp(24px, 3.4vw, 44px);
+}
+
+.rec__head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 20px;
+  align-items: baseline;
+}
+
+.rec__ref {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--brass);
+  border: 1px solid var(--brass-deep);
+  padding: 6px 10px;
+}
+
+.rec__name {
+  font-size: clamp(1.7rem, 3.2vw, 2.8rem);
+  font-weight: 560;
+  font-variation-settings: 'opsz' 144;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.rec__line {
+  grid-column: 2;
+  margin-top: 8px;
+  font-style: italic;
+  color: var(--ivory-55);
+}
+
+.rec__specs {
+  margin-top: clamp(22px, 3vh, 34px);
+  border-top: 1px solid var(--line-blue);
+}
+
+.rec__spec {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-blue);
+}
+
+.rec__spec dt {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.18em;
+  line-height: 1.8;
+  text-transform: uppercase;
+  color: var(--ivory-35);
+}
+
+.rec__spec dd {
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
+  color: var(--ivory-text);
+}
+
+.rec__why-label {
+  margin-top: clamp(22px, 3vh, 32px);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.rec__why {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.rec__why li {
+  position: relative;
+  padding-left: 22px;
+  font-size: clamp(0.98rem, 1.2vw, 1.1rem);
+  line-height: 1.6;
+  color: var(--ivory-75);
+}
+
+.rec__why li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px;
+  height: 8px;
+  background: var(--brass);
+}
+
+.rec__note {
+  margin-top: clamp(20px, 3vh, 28px);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  line-height: 1.8;
+  text-transform: uppercase;
+  color: var(--ivory-35);
+}
+
+.results__actions {
+  margin-top: clamp(36px, 6vh, 60px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.results__reset {
+  border: 0;
+  background: none;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ivory-35);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition: color 140ms ease;
+}
+
+.results__reset:hover {
+  color: var(--ivory-text);
+}
+
+/* --------------------------------------------------------------------------
+   REEVES FILM — the craftsmanship sales moment below the configurator.
+   Deep-navy stage in the site's navy / cream / gold language. The approved
+   header film plays exactly as supplied; captions are pure HTML/CSS overlays
+   cross-faded off the playhead (see src/sections/ReevesFilm.tsx).
+   -------------------------------------------------------------------------- */
+
+.reeves-film {
+  background:
+    radial-gradient(1200px 420px at 50% -140px, rgba(255, 255, 255, 0.55), transparent 70%),
+    var(--ivory);
+  color: var(--ink);
+  padding-block: clamp(56px, 9vh, 112px) clamp(8px, 1.5vh, 16px);
+}
+
+.reeves-film__head {
+  text-align: center;
+}
+
+.reeves-film__title {
+  font-size: clamp(2rem, 4.6vw, 4.2rem);
+  font-weight: 560;
+  font-variation-settings: 'opsz' 144;
+  line-height: 1.02;
+  letter-spacing: -0.012em;
+  text-transform: uppercase;
+  color: var(--navy-900);
+}
+
+.reeves-film__sub {
+  margin-top: clamp(10px, 1.6vh, 16px);
+  max-width: 42ch;
+  margin-inline: auto;
+  font-size: clamp(1.02rem, 1.35vw, 1.3rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--ink-75);
+}
+
+.reeves-film__stage {
+  position: relative;
+  margin-top: clamp(16px, 2.8vh, 28px);
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line-strong);
+  background: #000;
+  overflow: hidden;
+}
+
+.reeves-film__media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Centered caption layer. Opacity is driven by the film playhead (inline
+   style) and cross-fades through the transition below — elegant one-at-a-time
+   fades, nothing burned into the footage. A soft dark scrim stays behind the
+   caption so the text reads over any frame while the film stays the focus. */
+.reeves-film__overlay {
+  position: absolute;
+  inset-inline: 0;
+  top: 38%;
+  transform: translateY(-50%);
+  text-align: center;
+  pointer-events: none;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3.2vw, 2.7rem);
+  font-weight: 620;
+  font-variation-settings: 'opsz' 144;
+  line-height: 1.05;
+  letter-spacing: 0.085em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow:
+    0 0 3px rgba(0, 0, 0, 0.9),
+    0 1px 4px rgba(0, 0, 0, 0.85),
+    0 2px 12px rgba(0, 0, 0, 0.7),
+    0 0 28px rgba(0, 0, 0, 0.5);
+  transition: opacity 1.1s ease;
+}
+
+.reeves-film__overlay::before {
+  content: '';
+  position: absolute;
+  inset: -1.6em 0;
+  border-radius: 14px;
+  background: radial-gradient(
+    50% 100% at 50% 60%,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.3) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  pointer-events: none;
+}
+
+/* The gold purchase hand-off — machined brass button over the lower band. */
+.reeves-film__cta {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(16px, 3.5vh, 34px);
+  transform: translateX(-50%);
+  transition: opacity 1.1s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive + reduced motion
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .hero-v3__grid,
+  .fyre__grid,
+  .maker__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-v3__cta-row {
+    justify-content: flex-start;
+  }
+
+  /* stacked hero: give the photo a fixed square shape again */
+  .hero-v3__record-media {
+    flex: none;
+    aspect-ratio: 1 / 1;
+  }
+
+  .hero-v3__rings {
+    opacity: 0.08;
+  }
+
+  .hero-v3__record {
+    max-width: 560px;
+  }
+
+  .finder__opts {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-v3__title {
+    font-size: clamp(1.6rem, 7.6vw, 2.5rem);
+  }
+
+  .hero-v3__strip {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+  }
+
+  .hero-v3__strip-frame {
+    flex: none;
+    width: min(66vw, 320px);
+    scroll-snap-align: start;
+  }
+
+  .finder__opts {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-row .btn,
+  .finder__nav .btn,
+  .results__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rec__head {
+    grid-template-columns: 1fr;
+  }
+
+  .rec__line {
+    grid-column: 1;
+  }
+
+  .rec__spec {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .reeves-film__overlay {
+    font-size: clamp(1.05rem, 5.4vw, 1.5rem);
+  }
+
+  .reeves-film__cta {
+    width: min(100%, 300px);
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .finder__bar-fill,
+  .fyre__cta,
+  .fyre__cta-arrow,
+  .reeves-film__overlay,
+  .reeves-film__cta {
+    transition: none;
+  }
+}
+
