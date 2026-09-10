@@ -135,13 +135,8 @@
 }
 
 .cfg-window--cup .cfg-window__pill {
-  width: max(66px, calc(98 * var(--u)));
-  aspect-ratio: 98 / 60;
-  background: rgba(255, 253, 248, 0.92);
-  box-shadow:
-    0 0 0 calc(2 * var(--u)) rgba(255, 255, 255, 0.35),
-    0 calc(2 * var(--u)) calc(7 * var(--u)) rgba(9, 18, 32, 0.32),
-    inset 0 calc(1 * var(--u)) calc(2 * var(--u)) rgba(18, 38, 66, 0.14);
+  width: max(66px, calc(108 * var(--u)));
+  aspect-ratio: 108 / 56;
 }
 
 .cfg-window--backbore .cfg-window__pill {
@@ -231,11 +226,11 @@
 }
 
 .cfg-window--cup .cfg-arrow--up {
-  top: calc(50% - 54 * var(--u));
+  top: calc(50% - 66 * var(--u));
 }
 
 .cfg-window--cup .cfg-arrow--down {
-  top: calc(50% + 28 * var(--u));
+  top: calc(50% + 30 * var(--u));
 }
 
 .cfg-window--backbore .cfg-arrow--up {
